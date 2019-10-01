@@ -31,7 +31,8 @@ const useStyles = makeStyles({
     textAlign: 'center'
   },
   container: {
-    height: '100%'
+    height: '100%',
+    position: 'absolute'
   }
 });
 

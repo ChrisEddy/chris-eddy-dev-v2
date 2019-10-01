@@ -6,6 +6,7 @@ import LandingSection from './components/LandingSection';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/styles';
+import SpeedDial from './components/SpeedDial';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,6 +25,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Navbar />
         <LandingSection />
+        <SpeedDial />
       </ThemeProvider>
     </div>
   );
