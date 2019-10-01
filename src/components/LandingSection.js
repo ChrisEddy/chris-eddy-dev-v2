@@ -4,10 +4,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Me from '../assets/me.jpg';
 import Typography from '@material-ui/core/Typography';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import IconButton from '@material-ui/core/IconButton';
+import {isMobile} from '../enviroment'
 
 const useStyles = makeStyles({
   topSpacer: {
-    marginTop: '26vh'
+    marginTop: isMobile ? '18vh' : '26vh'
   },
   bigAvatar: {
     width: 200,
@@ -17,6 +20,18 @@ const useStyles = makeStyles({
   name: {
     textAlign: 'center',
     marginTop: 10
+  },
+  downArrowButton: {
+    margin: '0 auto',
+  },
+  downArrow: {
+    fontSize: 50
+  },
+  alignCenter: {
+    textAlign: 'center'
+  },
+  container: {
+    height: '100%'
   }
 });
 
@@ -24,12 +39,10 @@ const LandingSection = () => {
   const classes = useStyles();
 
   return (
-    <Grid container>
+    <Grid container className={classes.container}>
       <Grid item xs={12}>
         <div className={classes.topSpacer}></div>
-        <Avatar alt="Remy Sharp" src={Me} className={classes.bigAvatar} boxShadow={3}/>
-      </Grid>
-      <Grid item xs={12}>
+        <Avatar alt="Chris Eddy" src={Me} className={classes.bigAvatar}/>
         <Typography variant="h2" className={classes.name}>
           Chris Eddy
         </Typography>     
@@ -39,6 +52,11 @@ const LandingSection = () => {
         <Typography variant="subtitle1" className={classes.name}>
           Vancouver, BC, Canada
         </Typography>    
+      </Grid>
+      <Grid item xs={12} className={classes.alignCenter}>
+        <IconButton edge="start" className={classes.downArrowButton} color="inherit" aria-label="menu" size="small">
+          <KeyboardArrowDownIcon className={classes.downArrow}/>
+        </IconButton>
       </Grid>
     </Grid>
   );

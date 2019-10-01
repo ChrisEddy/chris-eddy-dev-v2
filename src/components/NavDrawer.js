@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -19,29 +18,23 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SwipeableTemporaryDrawer() {
+const NavDrawer = props => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  const toggleDrawer = (side, open) => event => {
+  const toggleDrawer = (event, open) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
-    setState({ ...state, [side]: open });
+    setIsOpen(!isOpen);
   };
 
-  const sideList = side => (
+  const sideList = () => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
+      onClick={() => toggleDrawer(false)}
+      onKeyDown={() => toggleDrawer(false)}
     >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -66,12 +59,14 @@ export default function SwipeableTemporaryDrawer() {
   return (
     <div>
       <SwipeableDrawer
-        open={state.left}
-        onClose={toggleDrawer('left', false)}
-        onOpen={toggleDrawer('left', true)}
+        open={props.open}
+        onClose={() => toggleDrawer(false)}
+        onOpen={() => toggleDrawer(true)}
       >
-        {sideList('left')}
+        {sideList()}
       </SwipeableDrawer>
     </div>
   );
 }
+
+export default NavDrawer;
