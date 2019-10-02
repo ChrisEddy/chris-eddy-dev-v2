@@ -6,10 +6,12 @@ import LandingSection from './components/LandingSection';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { withTheme } from '@material-ui/styles';
-import SpeedDial from './components/SpeedDial';
+import AboutMeSection from './components/AboutMeSection';
+// import SpeedDial from './components/SpeedDial';
 
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: {
         main: '#424242',
     },
@@ -25,7 +27,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <Navbar />
         <LandingSection />
-        <SpeedDial />
+        <AboutMeSection />
+        {/* <SpeedDial /> */}
       </ThemeProvider>
     </div>
   );

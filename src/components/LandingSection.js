@@ -6,7 +6,7 @@ import Me from '../assets/me.jpg';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import IconButton from '@material-ui/core/IconButton';
-import {isMobile} from '../enviroment'
+import { isMobile } from '../enviroment'
 
 const useStyles = makeStyles({
   topSpacer: {
@@ -31,13 +31,19 @@ const useStyles = makeStyles({
     textAlign: 'center'
   },
   container: {
-    height: '100%',
-    position: 'absolute'
+    height: '93%'
   }
 });
 
 const LandingSection = () => {
   const classes = useStyles();
+
+  const scrollTo = () => {
+    window.scrollTo({
+      top: document.getElementById('aboutMe').offsetTop,
+      behavior: 'smooth'
+    });
+  }
 
   return (
     <Grid container className={classes.container}>
@@ -55,7 +61,7 @@ const LandingSection = () => {
         </Typography>    
       </Grid>
       <Grid item xs={12} className={classes.alignCenter}>
-        <IconButton edge="start" className={classes.downArrowButton} color="inherit" aria-label="menu" size="small">
+        <IconButton edge="start" className={classes.downArrowButton} color="inherit" aria-label="menu" size="small" onClick={() => scrollTo()}>
           <KeyboardArrowDownIcon className={classes.downArrow}/>
         </IconButton>
       </Grid>
